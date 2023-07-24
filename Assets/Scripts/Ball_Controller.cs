@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Ball_Controller : MonoBehaviour
 {
@@ -9,10 +8,12 @@ public class Ball_Controller : MonoBehaviour
     public float maxSpeed;
 
     private Rigidbody rig;
+    private Vector3 InitialPosition; // Variabel posisi bola di awal
 
     private void Start()
     {
         rig = GetComponent<Rigidbody>();
+        InitialPosition = transform.position; // Simpan posisinya
     }
 
     private void Update()
@@ -27,11 +28,14 @@ public class Ball_Controller : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Kalau nabrak tembok bawah bruh
+        // Kalau nabrak tembok bawah (Restart Wall bakal restart)
         if (collision.gameObject.CompareTag("RestartWall"))
         {
-            // Congrats you lose
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // Congrats you lose restarting the ball position
+            transform.position = InitialPosition;
+            
+            // Jaga jaga reset kecepatan bola jadi 0 (biar gak gerak pas respawn)
+            rig.velocity = Vector3.zero;
         }
     }
 }

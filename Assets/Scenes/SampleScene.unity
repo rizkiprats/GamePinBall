@@ -953,7 +953,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spawner: {fileID: 5237406692449922263, guid: 0c1351c88b5ce244c8f14c2a88d77aba, type: 3}
   SpawnTime: 3
-  MaxSpawn: 3
 --- !u!4 &601625900
 Transform:
   m_ObjectHideFlags: 0
@@ -1271,7 +1270,7 @@ GameObject:
   - component: {fileID: 757341224}
   m_Layer: 0
   m_Name: Tembok
-  m_TagString: Untagged
+  m_TagString: RestartWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
