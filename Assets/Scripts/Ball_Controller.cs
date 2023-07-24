@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball_Controller : MonoBehaviour
 {
@@ -21,6 +22,16 @@ public class Ball_Controller : MonoBehaviour
         {
             // kalau melebihi buat vector velocity baru dengan besaran max speed
             rig.velocity = rig.velocity.normalized * maxSpeed;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Kalau nabrak tembok bawah bruh
+        if (collision.gameObject.CompareTag("RestartWall"))
+        {
+            // Congrats you lose
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

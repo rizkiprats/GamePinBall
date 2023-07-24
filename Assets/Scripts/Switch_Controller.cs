@@ -17,8 +17,7 @@ public class Switch_Controller : MonoBehaviour
         Off,
         On,
         Blink
-
-    }
+    };
 
     private SwitchLight switchLight;
 
@@ -30,12 +29,23 @@ public class Switch_Controller : MonoBehaviour
         StartCoroutine(StartBlinkLoop(5));
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if(other == Bola)
         {
             Toggle();
+        }
+    }
+
+    private void Toggle()
+    {
+        if (switchLight == SwitchLight.On)
+        {
+            Set(false);
+        }
+        else
+        {
+            Set(true);
         }
     }
 
@@ -79,20 +89,6 @@ public class Switch_Controller : MonoBehaviour
         }
 
         switchLight = SwitchLight.Off;
-
         StartCoroutine(StartBlinkLoop(5));
     }
-
-    private void Toggle()
-    {
-        if (switchLight == SwitchLight.On)
-        {
-            Set(false);
-        }
-        else
-        {
-            Set(true);
-        }
-    }
-
 }
